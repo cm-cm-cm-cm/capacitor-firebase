@@ -30,14 +30,25 @@ import FirebaseAnalytics
         Analytics.setUserProperty(value, forName: key)
     }
 
-    @objc public func setCurrentScreen(_ screenName: String?, _ screenClass: String?) {
+    @objc public func setCurrentScreen(_ screenName: String?, _ screenClass: String?, _ contentId: String?, _ contentTitle: String?, ) {
         var params = [String: Any]()
         if screenName != nil {
             params[AnalyticsParameterScreenName] = screenName
+            params["fn_screen_id"] = screenName
         }
         if screenClass != nil {
             params[AnalyticsParameterScreenClass] = screenClass
+            params["fn_screen_class"] = screenClass
         }
+
+        if contentId != nil {
+            params["fn_content_id"] = contentId
+        }
+
+        if contentTitle != nil {
+            params["fn_content_title"] = contentTitle
+        }
+
         DispatchQueue.main.async {
             Analytics.logEvent(AnalyticsEventScreenView,
                                parameters: params)

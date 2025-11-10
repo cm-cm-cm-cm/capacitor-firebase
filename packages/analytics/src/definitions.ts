@@ -184,6 +184,9 @@ export interface SetCurrentScreenOptions {
    * @since 0.1.0
    */
   screenClassOverride?: string | null;
+
+  contentId?: string | null
+  conentTitle?: string | null
 }
 
 /**

@@ -87,7 +87,9 @@ public class FirebaseAnalyticsPlugin: CAPPlugin, CAPBridgedPlugin {
     @objc func setCurrentScreen(_ call: CAPPluginCall) {
         let screenName = call.getString("screenName")
         let screenClass = call.getString("screenClassOverride")
-        implementation?.setCurrentScreen(screenName, screenClass)
+        let contentId = call.getString("contentId")
+        let contentTitle = call.getString("contentTitle")
+        implementation?.setCurrentScreen(screenName, screenClass, contentId, contentTitle)
         call.resolve()
     }
 

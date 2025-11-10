@@ -109,7 +109,9 @@ public class FirebaseAnalyticsPlugin extends Plugin {
         try {
             String screenName = call.getString("screenName", null);
             String screenClassOverride = call.getString("screenClassOverride", null);
-            implementation.setCurrentScreen(screenName, screenClassOverride);
+            String contentId = call.getString("contentId", null);
+            String contentTitle = call.getString("contentTitle", null);
+            implementation.setCurrentScreen(screenName, screenClassOverride, contentId, contentTitle);
             call.resolve();
         } catch (Exception exception) {
             Logger.error(TAG, exception.getMessage(), exception);

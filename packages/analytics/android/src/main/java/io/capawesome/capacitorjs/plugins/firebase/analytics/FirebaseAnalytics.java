@@ -57,10 +57,17 @@ public class FirebaseAnalytics {
         getFirebaseAnalyticsInstance().setUserProperty(key, value);
     }
 
-    public void setCurrentScreen(String screenName, String screenClass) {
+    public void setCurrentScreen(String screenName, String screenClass, String contentId, String contentTitle) {
         Bundle bundle = new Bundle();
         bundle.putString(com.google.firebase.analytics.FirebaseAnalytics.Param.SCREEN_NAME, screenName);
         bundle.putString(com.google.firebase.analytics.FirebaseAnalytics.Param.SCREEN_CLASS, screenClass);
+
+        bundle.putString("fn_screen_id", screenName);
+        bundle.putString("fn_screen_class", screenClass);
+
+        bundle.putString("fn_content_id", contentId);
+        bundle.putString("fn_content_title", contentTitle);
+
 
         bridge
             .getActivity()
